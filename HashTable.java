@@ -14,7 +14,6 @@ public class HashTable {
       System.out.println("Enter User ID");
       userin = in.nextLine();
       System.out.print("Your User ID '"+userin);
-//    boolean available = isValid(userin);
       boolean available = isAlphaNumeric(userin);
 	if(available == false){
 	 System.out.print("' is the incorrect format");
@@ -23,22 +22,6 @@ public class HashTable {
 	}
       System.out.println("");
       System.out.println ("Returned variable = "+available);
-/*
-      try  
- 
-	 {  
-   	   double d = Double.parseDouble(userin);  ;
- 	 }
-  
-      catch(NumberFormatException nfe)  
- 	
-	 {  
-	    System.out.print("' is the incorrect format");
-	    System.out.println("");
-	    return;  
-         }  
-*/
-      System.out.print(" is available");
 
       // Create a hash map
       Hashtable balance = new Hashtable();
@@ -67,6 +50,7 @@ public class HashTable {
       balance.get("Zara"));
    }
 
+// Check if only AlphaNumeric, no symbols in userID
    public static  boolean isAlphaNumeric(String s){
 	String pattern= "^[a-zA-Z0-9]*$";
         if(s.matches(pattern)){
@@ -74,36 +58,4 @@ public class HashTable {
         }
         return false;   
    }
-  /* public static boolean isValid(String s) {
-       String la = ".*[a-z].*";
-       String n = ".*[0-9].*";
-       String a = ".*[A-Z].*";
-
-	if (Pattern.matches("[a-zA-Z]+", text)){
-	  System.out.println(" ");
-	}
-
-	// If all lower, upper, or number case.
-	if (s.matches(n) == true || s.matches(a) == true || s.matches(la) == true){
-	 return true;
-	}
-	
-	// If only numbers and uppercase letters
-	if (s.matches(n) == true && s.matches(a) == true){
-	 return true;
-	}
-  
-	// If only numbers and lowercase letters
-        if (s.matches(n) == true && s.matches(la) == true){
-         return true;
-        }
-
-	// If numbers, lowercase, and uppercase letters
-        if (s.matches(n) == true && s.matches(a) == true && s.matches(la) == true){
-         return true;
-        }
-
-       return false;
-   } */
-
 }
