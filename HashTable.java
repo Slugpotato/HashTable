@@ -13,6 +13,14 @@ public class HashTable {
       
       System.out.println("Enter User ID");
       userin = in.nextLine();
+
+      // Check if entered ID is more than 12 characters 
+      if (userin.length() > 16){
+      System.out.print("Entered ID is too long");
+      System.out.println("");
+	return;
+      }
+
       System.out.print("Your User ID '"+userin);
       boolean available = isAlphaNumeric(userin);
 	if(available == false){
