@@ -28,23 +28,35 @@ public class HashTable {
 	
       String userin;
       
-      System.out.println("Enter User ID");
+      System.out.println("Enter User ID that is less than 16 characters with no symbols");
       userin = in.nextLine();
 
-      // Check if entered ID is more than 12 characters 
+      // Check if entered ID is more than 16 characters 
       if (userin.length() > 16){
       System.out.print("Entered ID is too long");
       System.out.println("");
-	return;
+       main(args);
+      }
+      
+      // Adding zeros to the end of the userin till it is 16 characters
+      if (userin.length() <16){
+	System.out.print("Initial length of the UserID is '"+userin);
+	for(int i= userin.length(); i<16; i++)
+	userin = userin +"0";
+	System.out.println("New UserID is "+userin);
       }
 
       System.out.print("Your User ID '"+userin);
       boolean available = isAlphaNumeric(userin);
-	if(available == false){
+
+      // Will end program if 
+       if(available == false){
 	 System.out.print("' is the incorrect format");
-	}else{
+	 System.out.println("");
+	 main(args);
+       }else{
 	 System.out.print("' is the correct format");
-	}
+       }
       System.out.println("");
       System.out.println ("Returned variable = "+available);
 
@@ -53,14 +65,16 @@ public class HashTable {
       Enumeration names;
       String str;
       double bal;
-      
-      // Generating random number
-//////////////////////////////////////////////////////
 
+///////////////////////////////////////////////////////////////////////////////
+//First Switch case to translate the digits in the userID to six digits binary
+///////////////////////////////////////////////////////////////////////////////
+
+	String sumString = "";
 	for (int i = 0; i<userin.length(); i++){
 	 char c = userin.charAt(i);
-	 System.out.println ("Iterated char= "+c);
-	 
+	 System.out.println ("Iterated char= "+c);	 
+
 	 String charString;
 	 switch (c) {
             case '0':  charString = "000001";
@@ -191,28 +205,23 @@ public class HashTable {
                      break;
          }
 	  System.out.println("Bit translated to: " +charString);
+	  sumString = sumString+charString;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	System.out.println("Total string equals to: " +sumString);
 ////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+
+      
+
+
+
+
+
+
+
+
+
+
       // Entering new user into hashtable
       balance.put(userin, new Double(300.00));
       
@@ -222,7 +231,7 @@ public class HashTable {
       // Show all balances in hash table.
       names = balance.keys();
       while(names.hasMoreElements()) {
-	 System.out.println("");
+//	 System.out.println("");
          str = (String) names.nextElement();
 //         System.out.println(str + ": " +
 //         balance.get(str));
