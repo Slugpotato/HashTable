@@ -28,7 +28,8 @@ public class HashTable {
 	
       String userin;
       String[] finalArray = new String[24];
-      
+      String[] numArray = new String[24];
+
       System.out.println("Enter User ID that is less than 16 characters with no symbols");
       userin = in.nextLine();
 
@@ -78,7 +79,7 @@ public class HashTable {
 	String sumString = "";
 	for (int i = 0; i<userin.length(); i++){
 	 char c = userin.charAt(i);
-	 System.out.println ("Iterated char= "+c);	 
+//	 System.out.println ("Iterated char= "+c);	 
 
 	 String charString;
 	 switch (c) {
@@ -223,18 +224,8 @@ public class HashTable {
 // finalArray[1] = result[0]+result[1]+result[2]+result[3] 
 
   for(int i = 0; i<24; i++){
-//    finalArray[x] = result[(4x)+1] + result[((4x)+2] + result [(4x)+3] + result[(4x)+4];
-    
-//      int first, second, third, fourth;
-
-      
-//      first = 4i+1;
-//      second = 4i+2;
-//      third = 4i+3;
-//      fourth = 4i+4;
-
-      finalArray[i] = result[4*i+1] + result[4*i+2] + result[4*i+3] + result[4*i+4];
-   }
+   finalArray[i] = result[4*i+1] + result[4*i+2] + result[4*i+3] + result[4*i+4];
+  }
 
 System.out.print(Arrays.toString(result));
 
@@ -243,23 +234,70 @@ System.out.println(finalArray[1]);
 System.out.println(finalArray[2]);
 System.out.println(finalArray[3]);
 
- // }
 //for(String c : finalArray)
-//            System.out.println(c);
-
-//int size = result.length;
-//System.out.println(size);
+//  System.out.println(c);
 
 // System.out.print(Arrays.toString(finalArray));
 
+
+for(int i = 0; i<finalArray.length; i++){
+ String numString;
+// System.out.println("numArray: " +numArray[i]);
+// numArray[i] = numString;
+ String c = finalArray[i];
+         switch (c) {
+            case "0000":  numString = "0";
+	    numArray[i] = numString;
+                     break;
+            case "0001":  numString = "1";
+            numArray[i] = numString;
+                     break;
+            case "0010":  numString = "2";
+            numArray[i] = numString;
+                     break;
+            case "0011":  numString = "3";
+            numArray[i] = numString;
+                     break;
+            case "0100":  numString = "4";
+            numArray[i] = numString;
+	             break;
+            case "0101":  numString = "5";
+            numArray[i] = numString;
+	             break;
+            case "0110":  numString = "6";
+            numArray[i] = numString; 
+	             break;
+            case "0111":  numString = "7";
+            numArray[i] = numString;         
+                     break;
+            case "1000":  numString = "8";
+            numArray[i] = numString;         
+		     break;
+            case "1001":  numString = "9";
+            numArray[i] = numString;         
+		     break;
+            case "1010": numString = "10";
+            numArray[i] = numString;         
+		     break;
+            case "1011": numString = "11";
+            numArray[i] = numString;         
+		     break;
+            case "1100": numString = "12";
+            numArray[i] = numString;         
+		     break;
+            case "1101": numString = "13";
+            numArray[i] = numString;         
+		     break;
+            case "1110": numString = "14";
+            numArray[i] = numString;         
+		     break;
+            case "1111": numString = "15";
+            numArray[i] = numString;          
+                     break;
+   }
+  }
+ System.out.print(Arrays.toString(numArray));
  }
-      
-
-
-
-
-
-
 }
 
 // Check if only AlphaNumeric, no symbols in userID
