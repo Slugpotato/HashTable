@@ -27,6 +27,7 @@ public class HashTable {
       Scanner in = new Scanner(System.in);
 	
       String userin;
+      String[] finalArray = new String[24];
       
       System.out.println("Enter User ID that is less than 16 characters with no symbols");
       userin = in.nextLine();
@@ -35,6 +36,7 @@ public class HashTable {
       if (userin.length() > 16){
       System.out.print("Entered ID is too long");
       System.out.println("");
+//      return:
        main(args);
       }
       
@@ -53,12 +55,13 @@ public class HashTable {
        if(available == false){
 	 System.out.print("' is the incorrect format");
 	 System.out.println("");
+//	 return:
 	 main(args);
        }else{
 	 System.out.print("' is the correct format");
        }
-      System.out.println("");
-      System.out.println ("Returned variable = "+available);
+//      System.out.println("");
+//      System.out.println ("Returned variable = "+available);
 
       // Create a hash map
       Hashtable balance = new Hashtable();
@@ -69,6 +72,8 @@ public class HashTable {
 ///////////////////////////////////////////////////////////////////////////////
 //First Switch case to translate the digits in the userID to six digits binary
 ///////////////////////////////////////////////////////////////////////////////
+
+ if(userin.length() == 16 && available == true ){
 
 	String sumString = "";
 	for (int i = 0; i<userin.length(); i++){
@@ -210,39 +215,52 @@ public class HashTable {
 	System.out.println("Total string equals to: " +sumString);
 ////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////
+ 
+// Breakup the big string into an array of every character
+ String [] result = sumString.split("");
+ // for(String c : result)
+   //         System.out.println(c); 
+// finalArray[1] = result[0]+result[1]+result[2]+result[3] 
+
+  for(int i = 0; i<24; i++){
+//    finalArray[x] = result[(4x)+1] + result[((4x)+2] + result [(4x)+3] + result[(4x)+4];
+    
+//      int first, second, third, fourth;
 
       
+//      first = 4i+1;
+//      second = 4i+2;
+//      third = 4i+3;
+//      fourth = 4i+4;
 
-
-
-
-
-
-
-
-
-
-      // Entering new user into hashtable
-      balance.put(userin, new Double(300.00));
-      
-      balance.put("Zara", new Double(3434.34));
-      balance.put("Mahnaz", new Double(123.22));
-
-      // Show all balances in hash table.
-      names = balance.keys();
-      while(names.hasMoreElements()) {
-//	 System.out.println("");
-         str = (String) names.nextElement();
-//         System.out.println(str + ": " +
-//         balance.get(str));
-      }
-      System.out.println();
-      // Deposit 1,000 into Zara's account
-      bal = ((Double)balance.get("Zara")).doubleValue();
-      balance.put("Zara", new Double(bal+1000));
-      System.out.println("Zara's new balance: " +
-      balance.get("Zara"));
+      finalArray[i] = result[4*i+1] + result[4*i+2] + result[4*i+3] + result[4*i+4];
    }
+
+System.out.print(Arrays.toString(result));
+
+System.out.println(finalArray[0]);
+System.out.println(finalArray[1]);
+System.out.println(finalArray[2]);
+System.out.println(finalArray[3]);
+
+ // }
+//for(String c : finalArray)
+//            System.out.println(c);
+
+//int size = result.length;
+//System.out.println(size);
+
+// System.out.print(Arrays.toString(finalArray));
+
+ }
+      
+
+
+
+
+
+
+}
 
 // Check if only AlphaNumeric, no symbols in userID
    public static  boolean isAlphaNumeric(String s){
