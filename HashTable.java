@@ -25,28 +25,29 @@ public class HashTable {
    public static void main(String args[]) {
 
       Scanner in = new Scanner(System.in);
-	
-      String userin;
+      BufferedReader reader = null;
+      String userin = "";
+
+	// Checks if file input via length of args
+	if(args.length == 1){
+	 System.out.println("Args = 1 check works! :D");
+
+	}
+
+	// Checks if userinput via length of args	 
+	if(args.length == 0) {
+	 System.out.println("Enter User ID that is less than 16 characters with no symbols");
+	 userin = in.nextLine();
+	}
+
       String[] finalArray = new String[24];
       String[] numArray = new String[24];
-
-      System.out.println("Enter User ID that is less than 16 characters with no symbols");
-      userin = in.nextLine();
 
       // Check if entered ID is more than 16 characters 
       if (userin.length() > 16){
       System.out.print("Entered ID is too long");
       System.out.println("");
-//      return:
        main(args);
-      }
-      
-      // Adding zeros to the end of the userin till it is 16 characters
-      if (userin.length() <16){
-	System.out.print("Initial length of the UserID is '"+userin);
-	for(int i= userin.length(); i<16; i++)
-	userin = userin +"0";
-	System.out.println("New UserID is "+userin);
       }
 
       System.out.print("Your User ID '"+userin);
@@ -56,19 +57,17 @@ public class HashTable {
        if(available == false){
 	 System.out.print("' is the incorrect format");
 	 System.out.println("");
-//	 return:
 	 main(args);
        }else{
 	 System.out.print("' is the correct format");
        }
-//      System.out.println("");
-//      System.out.println ("Returned variable = "+available);
 
-      // Create a hash map
-      Hashtable balance = new Hashtable();
-      Enumeration names;
-      String str;
-      double bal;
+       // Adding zeros to the end of the userin till it is 16 characters
+      if (userin.length() <16){
+        for(int i= userin.length(); i<16; i++)
+        userin = userin +"0";
+      }
+
 
 ///////////////////////////////////////////////////////////////////////////////
 //First Switch case to translate the digits in the userID to six digits binary
@@ -78,8 +77,7 @@ public class HashTable {
 
 	String sumString = "";
 	for (int i = 0; i<userin.length(); i++){
-	 char c = userin.charAt(i);
-//	 System.out.println ("Iterated char= "+c);	 
+	 char c = userin.charAt(i);	 
 
 	 String charString;
 	 switch (c) {
@@ -210,40 +208,27 @@ public class HashTable {
             default: charString  = "Incorrect Digit";
                      break;
          }
-	  System.out.println("Bit translated to: " +charString);
 	  sumString = sumString+charString;
         }
-	System.out.println("Total string equals to: " +sumString);
 ////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////
  
 // Breakup the big string into an array of every character
- String [] result = sumString.split("");
- // for(String c : result)
-   //         System.out.println(c); 
-// finalArray[1] = result[0]+result[1]+result[2]+result[3] 
+ String [] result = sumString.split(""); 
 
   for(int i = 0; i<24; i++){
    finalArray[i] = result[4*i+1] + result[4*i+2] + result[4*i+3] + result[4*i+4];
   }
 
-System.out.print(Arrays.toString(result));
-
-System.out.println(finalArray[0]);
-System.out.println(finalArray[1]);
-System.out.println(finalArray[2]);
-System.out.println(finalArray[3]);
-
-//for(String c : finalArray)
-//  System.out.println(c);
-
 // System.out.print(Arrays.toString(finalArray));
 
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
 
+// Second Swicth case that outputs the final array of numbers
 for(int i = 0; i<finalArray.length; i++){
  String numString;
-// System.out.println("numArray: " +numArray[i]);
-// numArray[i] = numString;
+
  String c = finalArray[i];
          switch (c) {
             case "0000":  numString = "0";
@@ -296,7 +281,10 @@ for(int i = 0; i<finalArray.length; i++){
                      break;
    }
   }
+ System.out.println("");
+ System.out.print("Final array value is ");
  System.out.print(Arrays.toString(numArray));
+ System.out.println("");
  }
 }
 
